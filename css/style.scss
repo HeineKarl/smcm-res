@@ -204,7 +204,9 @@ ul {
     }
   }
   &__body {
+    background-color: lightcoral;
     flex-grow: 2;
+    height: auto;
     display: flex;
     flex-direction: column;
     // overflow-y: scroll;
@@ -212,8 +214,12 @@ ul {
   }
 
   &__footer {
-    // background-color: red;
-    min-height: 40px;
+    background-color: red;
+    // min-height: 50px;
+    // max-height: 50px;
+    height: 70px;
+    max-height: 70px;
+    // flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -224,6 +230,8 @@ ul {
     p {
       font-size: 9px;
     }
+
+    // display: none;
   }
 }
 
@@ -235,6 +243,7 @@ ul {
   }
 
   &__btn {
+    transition: all 500ms ease-in-out;
     padding: 1.5em 1.5em;
     cursor: pointer;
     text-align: center;
@@ -470,15 +479,15 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
+
     box-shadow: none;
     transform: none;
     position: static;
-    // overflow: none;
 
     &__inner {
       height: 90%;
       width: 100%;
-      // overflow: hidden;
+      overflow: hidden;
       scrollbar-width: none;
     }
 

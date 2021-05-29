@@ -15,22 +15,25 @@ const headerFunctions = () => {
 
   // Variables for the Buttons
   const aboutBtn = document.querySelector(".about__btn");
+  const aboutBtnHgt = aboutBtn.getBoundingClientRect().height;
   const aboutPrt = document.querySelector(".about__inner");
   const aboutCon = document.querySelector(".about__container");
   const aboutBox = document.querySelector(".about__box");
-  const aboutHgt = aboutBox.getBoundingClientRect().height;
+  const aboutBoxHgt = aboutBox.getBoundingClientRect().height;
 
   const mgtBtn = document.querySelector(".mgt__btn");
+  const mgtBtnHgt = mgtBtn.getBoundingClientRect().height;
   const mgtPrt = document.querySelector(".mgt__inner");
   const mgtGrp = document.querySelector(".mgt__group");
   const mgtBody = document.querySelector(".mgt__body");
-  const mgtHgt = mgtBody.getBoundingClientRect().height;
+  const mgtBoxHgt = mgtBody.getBoundingClientRect().height;
 
   const serviceBtn = document.querySelector(".service__btn");
+  const serviceBtnHgt = serviceBtn.getBoundingClientRect().height;
   const servicePrt = document.querySelector(".service__inner");
   const serviceCon = document.querySelector(".service__container");
   const serviceBox = document.querySelector(".service__box");
-  const serviceHgt = serviceBox.getBoundingClientRect().height;
+  const serviceBoxHgt = serviceBox.getBoundingClientRect().height;
 
   // About Event
   const aboutEvent = () => {
@@ -39,20 +42,20 @@ const headerFunctions = () => {
       mgtGrp.classList.contains("dropdown")
     ) {
       // Removes the class and Collapse Back
-      checkResponsive(mgtPrt, mgtGrp, mgtHgt);
+      checkResponsive(mgtPrt, mgtGrp, mgtBoxHgt, mgtBtnHgt);
       // Add the class and Collapse In
-      checkResponsive(aboutPrt, aboutCon, aboutHgt);
+      checkResponsive(aboutPrt, aboutCon, aboutBoxHgt, aboutBtnHgt);
     } else if (
       serviceCon.classList.contains("collapse-transition") ||
       serviceCon.classList.contains("dropdown")
     ) {
       // Removes the class and Collapse Back
-      checkResponsive(servicePrt, serviceCon, serviceHgt);
+      checkResponsive(servicePrt, serviceCon, serviceBoxHgt, serviceBtnHgt);
       // Add the class and Collapse In
-      checkResponsive(aboutPrt, aboutCon, aboutHgt);
+      checkResponsive(aboutPrt, aboutCon, aboutBoxHgt, aboutBtnHgt);
     } else {
       // Add the class and Collapse In
-      checkResponsive(aboutPrt, aboutCon, aboutHgt);
+      checkResponsive(aboutPrt, aboutCon, aboutBoxHgt, aboutBtnHgt);
     }
   };
   aboutBtn.addEventListener("click", aboutEvent);
@@ -64,20 +67,20 @@ const headerFunctions = () => {
       aboutCon.classList.contains("dropdown")
     ) {
       // Removes the class and Collapse Back
-      checkResponsive(aboutPrt, aboutCon, aboutHgt);
+      checkResponsive(aboutPrt, aboutCon, aboutBoxHgt, aboutBtnHgt);
       // Add the class and Collapse In
-      checkResponsive(mgtPrt, mgtGrp, mgtHgt);
+      checkResponsive(mgtPrt, mgtGrp, mgtBoxHgt, mgtBtnHgt);
     } else if (
       serviceCon.classList.contains("collapse-transition") ||
       serviceCon.classList.contains("dropdown")
     ) {
       // Removes the class and Collapse Back
-      checkResponsive(servicePrt, serviceCon, serviceHgt);
+      checkResponsive(servicePrt, serviceCon, serviceBoxHgt, serviceBtnHgt);
       // Add the class and Collapse In
-      checkResponsive(mgtPrt, mgtGrp, mgtHgt);
+      checkResponsive(mgtPrt, mgtGrp, mgtBoxHgt, mgtBtnHgt);
     } else {
       // Add the class and Collapse In
-      checkResponsive(mgtPrt, mgtGrp, mgtHgt);
+      checkResponsive(mgtPrt, mgtGrp, mgtBoxHgt, mgtBtnHgt);
     }
   };
   mgtBtn.addEventListener("click", mgtEvent);
@@ -89,49 +92,49 @@ const headerFunctions = () => {
       aboutCon.classList.contains("dropdown")
     ) {
       // Removes the class and Collapse Back
-      checkResponsive(aboutPrt, aboutCon, aboutHgt);
+      checkResponsive(aboutPrt, aboutCon, aboutBoxHgt, aboutBtnHgt);
       // Add the class and Collapse In
-      checkResponsive(servicePrt, serviceCon, serviceHgt);
+      checkResponsive(servicePrt, serviceCon, serviceBoxHgt, serviceBtnHgt);
     } else if (
       mgtGrp.classList.contains("collapse-transition") ||
       mgtGrp.classList.contains("dropdown")
     ) {
       // Removes the class and Collapse Back
-      checkResponsive(mgtPrt, mgtGrp, mgtHgt);
+      checkResponsive(mgtPrt, mgtGrp, mgtBoxHgt, mgtBtnHgt);
       // Add the class and Collapse In
-      checkResponsive(servicePrt, serviceCon, serviceHgt);
+      checkResponsive(servicePrt, serviceCon, serviceBoxHgt, serviceBtnHgt);
     } else {
       // Add the class and Collapse In
-      checkResponsive(servicePrt, serviceCon, serviceHgt);
+      checkResponsive(servicePrt, serviceCon, serviceBoxHgt, serviceBtnHgt);
     }
   };
   serviceBtn.addEventListener("click", serviceEvent);
 
   // Function for the collapsing links
-  const collapseNav = (parent, container, height) => {
+  const collapseNav = (parent, container, boxHgt, btnHgt) => {
     if (container.classList.contains("dropdown")) {
-      dropDown(parent, container, height);
+      dropDown(parent, container, boxHgt, btnHgt);
     } else {
       container.classList.toggle("collapse-transition");
       if (container.classList.contains("collapse-transition")) {
-        parent.style.height = `${height + 68}px`;
+        parent.style.height = `${boxHgt + btnHgt}px`;
       } else {
-        parent.style.height = `${68}px`;
+        parent.style.height = `${btnHgt}px`;
       }
     }
   };
 
   // Function for the dropdown links
-  const dropDown = (parent, container, height) => {
+  const dropDown = (parent, container, boxHgt, btnHgt) => {
     if (container.classList.contains("collapse-transition")) {
-      collapseNav(parent, container, height);
+      collapseNav(parent, container, boxHgt, btnHgt);
     } else {
       container.classList.toggle("dropdown");
     }
   };
 
   // Responsive Check
-  const checkResponsive = (prt, con, hgt) => {
+  const checkResponsive = (prt, con, boxHgt, btnHgt) => {
     const desktopView = window.matchMedia("(min-width: 981px)");
     const tableView = window.matchMedia(
       "(min-width: 481px) and (max-width: 980px)"
@@ -139,10 +142,10 @@ const headerFunctions = () => {
 
     if (desktopView.matches) {
       console.log("Desktop");
-      dropDown(prt, con, hgt);
+      dropDown(prt, con, boxHgt, btnHgt);
     } else {
       console.log("Mobile");
-      collapseNav(prt, con, hgt);
+      collapseNav(prt, con, boxHgt, btnHgt);
     }
   };
 

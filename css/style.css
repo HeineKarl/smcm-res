@@ -238,9 +238,11 @@ ul {
 }
 
 .navigation__body {
+  background-color: lightcoral;
   -webkit-box-flex: 2;
       -ms-flex-positive: 2;
           flex-grow: 2;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -251,7 +253,9 @@ ul {
 }
 
 .navigation__footer {
-  min-height: 40px;
+  background-color: red;
+  height: 70px;
+  max-height: 70px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -285,6 +289,8 @@ ul {
 }
 
 .about__btn {
+  -webkit-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
   padding: 1.5em 1.5em;
   cursor: pointer;
   text-align: center;
@@ -534,6 +540,7 @@ ul {
   .navigation__inner {
     height: 90%;
     width: 100%;
+    overflow: hidden;
     scrollbar-width: none;
   }
   .navigation__header {
